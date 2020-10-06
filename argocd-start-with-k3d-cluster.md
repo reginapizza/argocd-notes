@@ -58,7 +58,7 @@ make: *** [Makefile:395: start] Error 2
 To fix these errors you will have to change the owner of these files. Run `sudo chown $USER /tmp/argocd-local/gpg/source`, `sudo chown $USER /tmp/argocd-local/gpg/keys`.
 
 2. `Unable to connect to the server: x509: certificate is valid for 0.0.0.0, 10.43.0.1, 127.0.0.1, 172.25.0.2, not 192.168.0.14` 
-This error means that the IP address is wrong. Open your `~/.kube/config` and make sure that `server:` says https://[your ip address]:[port] instead of https://0.0.0.0:[port]. 
+This error means that the IP address is wrong. Open your `~/.kube/config` and make sure that `server:` says `https://[your ip address]:[port]` instead of `https://0.0.0.0:[port]`. 
 
 2. `The container name "/argocd-test-server" is already in use by container "45d5d062b84f8816a39c226363afc5aadb7cd0c120584a096231e51a69c5c9de". You have to remove (or rename) that container to be able to reuse that name.`
 
