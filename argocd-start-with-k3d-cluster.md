@@ -33,4 +33,33 @@ cd ~/path/to/argo-cd
 ```
 kubectl apply -n argocd --force -f manifests/install.yaml
 ```
-6. 
+6. Make sure you are in your argocd namespace 
+```
+kubectl config set-context k3d-my-cluster --namespace=argocd
+```
+
+7. Run `make start` to start your instance of ArgoCD.
+
+8. Access the ArgoCD UI at [localhost:4000](http://localhost:4000/). Yay!
+
+9. To delete your cluster, run `k3d cluster stop my-cluster` and then `k3d cluster delete my-cluster`. 
+
+--- 
+
+##### Common Error Messages & How to Fix Them:
+
+1. 
+```
+rm: cannot remove '/tmp/argocd-local/gpg/source': Permission denied
+rm: cannot remove '/tmp/argocd-local/gpg/keys': Permission denied
+make: *** [Makefile:403: start-local] Error 1
+make: *** [Makefile:395: start] Error 2
+```
+To fix these errors you will have to change the owner of these files. Run `sudo chown $USER /tmp/argocd-local/gpg/source`, `sudo chown $USER /tmp/argocd-local/gpg/keys`.
+
+2. `Unable to connect to the server: x509: certificate is valid for 0.0.0.0, 10.43.0.1, 127.0.0.1, 172.25.0.2, not 192.168.0.14` 
+This error means that the IP address is wrong. Open your `~/.kube/config` and make sure that `server:` says https://[your ip address]:[port] instead of https://0.0.0.0:[port]. 
+
+2. `The container name "/argocd-test-server" is already in use by container "45d5d062b84f8816a39c226363afc5aadb7cd0c120584a096231e51a69c5c9de". You have to remove (or rename) that container to be able to reuse that name.`
+
+This will require you to stop the argcd-test-server. This error usually occurs if you tried to run `make start` before and something went wrong, but it still made the argocd-test-server. You can delete it with `docker stop [long number/letter container from above]` and then trying `make start` again.
