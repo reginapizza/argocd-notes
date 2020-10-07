@@ -11,9 +11,9 @@ Now that all that's done...
 
 1. Get your IP address
 ```
-ip addr
+ifconfig
 ```
-For more info with this step, see [here](https://tecadmin.net/check-ip-address-fedora-desktop/).  
+For more help with this step, see [here for Linux](https://www.cyberciti.biz/faq/bash-shell-command-to-find-get-ip-address/) or [here for MacOS](https://www.wikihow.com/Find-Your-IP-Address-on-a-Mac).  
 
 2. Start your k3d cluster.
 You will need to replace $HOST_IP with your IP address from the step above. (ex: `--api-port 192.168.1.240:6550`). Replace `my-cluster` with whatever you want your cluster to be called.
