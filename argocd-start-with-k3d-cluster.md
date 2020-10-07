@@ -1,5 +1,5 @@
 ### Instructions for Setting Up Development Environment for ArgoCD with K3D Clusters
-Note: This is specific to Fedora 32, no guarantees it works for other Linux distributions.
+Note: This is has only been tested on Fedora 32 and MacOS Catalina. For other OS's results may vary. 
 
 ##### Prerequisites: 
 - Install [Go](https://golang.org/doc/install)
